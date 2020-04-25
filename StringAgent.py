@@ -1,16 +1,16 @@
 import random
 import string
 
-def score(string_cand, trueString):
-    score_val = 0
-    for letterpair in zip(trueString, string_cand):
-        if letterpair[0] == letterpair[1]:
-            score_val += 1
-    return (score_val)
+# def score(string_cand, trueString):
+#     score_val = 0
+#     for letterpair in zip(trueString, string_cand):
+#         if letterpair[0] == letterpair[1]:
+#             score_val += 1
+#     return (score_val)
         
 
 # represent each string candidate
-class stringAgent:
+class StringAgent:
     def __init__(self, length):
 
         #ccreate a random string of lowercase letters
