@@ -9,7 +9,7 @@ def score(string_cand, trueString):
     return (score_val)
         
 
-#will represent each string candidate
+# represent each string candidate
 class stringAgent:
     def __init__(self, length):
 
