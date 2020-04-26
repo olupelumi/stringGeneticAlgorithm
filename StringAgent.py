@@ -21,3 +21,10 @@ class StringAgent:
         #overruns
         #A "special method of the class" to use (its what prints when we print the agent)
         return "String " + str(self.string) + " Fitness: " + str(self.fitness)
+
+    #some setters 
+    def set_string(self, new_string):
+        self.string = new_string
+    
+    def set_fitness(self, new_fitness):
+        self.fitness = new_fitness
