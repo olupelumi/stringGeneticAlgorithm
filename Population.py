@@ -8,7 +8,7 @@ class AgentPopulation:
     def __init__(self, num_pop, agent_length):
         self.num_pop = num_pop
         self.agent_len = agent_length
-        self.agent_list = [StringAgent.StringAgent(self.length) for _ in range(self.num_pop)]
+        self.agent_list = [StringAgent.StringAgent(self.agent_len) for _ in range(self.num_pop)]
     
     def set_agent_list(self, agent_lst):
         self.agent_list = agent_lst
@@ -69,6 +69,7 @@ class AgentPopulation:
             child2_agent.set_string(child2_string)
 
             #append the agents
+            offspring_agents.extend([child1_agent, child2_agent])
 
 
 
