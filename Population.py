@@ -51,7 +51,7 @@ class AgentPopulation:
         parent1 = sorted_agents[0]
         parent2 = sorted_agents[1]
 
-        print("parent 1: {}, parent 2: {}".format(parent1.string, parent2.string))
+        print("parent 1: {},\n parent 2: {}\n".format(parent1, parent2))
         return (parent1, parent2)
     def crossbreed(self, parent1, parent2):
         """
@@ -68,8 +68,9 @@ class AgentPopulation:
 
             #One way I can crossbreed is to combine the first portions of the first parent and the end portions of the second parent. 
             #The new strings beginning will be the beginning of the first parent and add the end of the string will be the end of the second parent and vice versa
-            child1_string = parent1[:split_idx] + parent2[split_idx:self.agent_len]
-            child2_string = parent2[:split_idx] + parent1[split_idx:self.agent_len]
+            
+            child1_string = parent1.get_string()[:split_idx] + parent2.get_string()[split_idx:self.agent_len]
+            child2_string = parent2.get_string()[:split_idx] + parent1.get_string()[split_idx:self.agent_len]
 
             #creating the agent offspring
             child1_agent = StringAgent.StringAgent(self.agent_len)
@@ -128,7 +129,7 @@ class AgentPopulation:
                 #then we mutate
                 newag = self.mutate(cand_agent)
                 new_pop_lst.append(newag)
-                print("new agent: {}".format(newag))
+                #print("new mutated agent: {}".format(newag))
                 continue
             #else add the agent as it is
             new_pop_lst.append(cand_agent)

@@ -5,8 +5,8 @@ import Population
 input_str = "Pelumi"
 input_str_len = len(input_str)
 population_num = 20
-generation_num = 10
-mutation_rate = 0.1
+generation_num = 500
+mutation_rate = 0.4
 
 
 #eleents of a genetic algortithm
@@ -18,7 +18,7 @@ mutation_rate = 0.1
 #Initializing the first population of agents
 curr_pop = Population.AgentPopulation(population_num, input_str_len)
 for gen in range(generation_num):
-    print("generation " + str(generation_num))
+    print("curr_generation " + str(gen))
 
     #Computes the fitness of all the agents
     curr_pop.compute_fitness(input_str)
@@ -29,34 +29,4 @@ for gen in range(generation_num):
     #updating the population
     curr_pop = new_pop
  
-
-
-
-
-
-# def ga():
-#    agent_pop = init_agents(population_num, input_str_len)
-
-#     for generation in generations:
-#         print("generation " + str(generation))
-#         #doing the fitness on each agent
-#         agents = fitness(agent_pop)
-#         #picking the top agents I want
-#         agents = selection(agent_pop)
-#         agents = crossover(agent_pop)
-#         agents = mutation(agent_pop)
-
-#         if any(agent.fitness >= 90 for agent in agents):
-#             print ("Threshold met")
-#             exit(0)
-
-# def init_agents(pop_num, length):
-#     return [stringAgent(length) for _ in range(population_num)]
-
-# def fitness(agent_pop):
-#     """
-#     inputs a population of agents
-#     evaluates the fitness of each agent thats created
-#     """
-
 
