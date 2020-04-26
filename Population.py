@@ -6,6 +6,7 @@ from fuzzywuzzy import fuzz
 #This class will represent a population of candidate strings
 
 class AgentPopulation:
+
     def __init__(self, num_pop, agent_length):
         self.num_pop = num_pop
         self.agent_len = agent_length
@@ -30,10 +31,11 @@ class AgentPopulation:
 
         Returns nothing
         """
-        for agent in self.agent_list:
+        ag_list = self.get_agent_list()
+        for agent in ag_list :
             #fitness is from 0 to 100, 100 being the agent matches the exact string
-            agent.fitness = fuzz.ratio(agent.string, true_string)
-
+            agent.set_fitness(fuzz.ratio(agent.string, true_string))
+        
     def select_agents(self):
         """
         selects a mating pool of agents to use to mutate and crossbreed
@@ -48,7 +50,6 @@ class AgentPopulation:
 
         print("parent 1: {}, parent 2: {}".format(parent1.string, parent2.string))
         return (parent1, parent2)
-
     def crossbreed(self, parent1, parent2):
         """
         Requires:
