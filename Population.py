@@ -38,6 +38,7 @@ class AgentPopulation:
             agent.set_fitness(fitscore)
             if fitscore >= 90:
                 print("agent that made threshold: {}".format(agent))
+                exit(0)
         
     def select_agents(self):
         """
@@ -48,8 +49,12 @@ class AgentPopulation:
 
         #sorting agents by their fitness
         sorted_agents = sorted(self.agent_list, key = lambda agent: agent.fitness, reverse = True)
-        parent1 = sorted_agents[0]
-        parent2 = sorted_agents[1]
+        
+        rand1 = random.randint(0, 10)
+        rand2 = random.randint(0, 10)
+    
+        parent1 = sorted_agents[rand1]
+        parent2 = sorted_agents[rand2]
 
         print("parent 1: {},\n parent 2: {}\n".format(parent1, parent2))
         return (parent1, parent2)

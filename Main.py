@@ -2,9 +2,9 @@
 #magdah - 6 letters 26^6 = 308915776
 import StringAgent
 import Population
-input_str = "Pelumi"
+input_str = "pelumi"
 input_str_len = len(input_str)
-population_num = 20
+population_num = 40
 generation_num = 500
 mutation_rate = 0.4
 
@@ -30,3 +30,7 @@ for gen in range(generation_num):
     curr_pop = new_pop
  
 
+# import matplotlib.pyplot as plt
+# plt.plot([1, 2, 3, 4])
+# plt.ylabel('some numbers')
+# plt.show()
