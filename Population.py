@@ -34,7 +34,10 @@ class AgentPopulation:
         ag_list = self.get_agent_list()
         for agent in ag_list :
             #fitness is from 0 to 100, 100 being the agent matches the exact string
-            agent.set_fitness(fuzz.ratio(agent.string, true_string))
+            fitscore = fuzz.ratio(agent.string, true_string)
+            agent.set_fitness(fitscore)
+            if fitscore >= 90:
+                print("agent that made threshold: {}".format(agent))
         
     def select_agents(self):
         """

@@ -5,7 +5,8 @@ import Population
 input_str = "Pelumi"
 input_str_len = len(input_str)
 population_num = 20
-generation_num = 1000
+generation_num = 10
+mutation_rate = 0.1
 
 
 #eleents of a genetic algortithm
@@ -23,8 +24,12 @@ for gen in range(generation_num):
     curr_pop.compute_fitness(input_str)
 
     #creates a new population of agents
-    new_pop = curr_pop.make_child_population()
-    
+    new_pop = curr_pop.make_child_population(mutation_rate)
+
+    #updating the population
+    curr_pop = new_pop
+ 
+
 
 
 
