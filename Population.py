@@ -1,5 +1,6 @@
 import StringAgent
 import random
+import string
 from fuzzywuzzy import fuzz
 
 #This class will represent a population of candidate strings
@@ -10,9 +11,14 @@ class AgentPopulation:
         self.agent_len = agent_length
         self.agent_list = [StringAgent.StringAgent(self.agent_len) for _ in range(self.num_pop)]
     
+    #setter
     def set_agent_list(self, agent_lst):
         self.agent_list = agent_lst
     
+    #getter
+    def get_agent_list(self):
+        return self.agent_list
+
     def compute_fitness(self, true_string):
         """
         Requires:
@@ -50,11 +56,12 @@ class AgentPopulation:
 
         Effect:
         Computes a new population from crossbreeding these two agents
-        Returns a new population object
+        Returns a new population instance created from crossbreeding
         """
         offspring_agents =[]
         for _ in range(self.num_pop//2):
             split_idx = random.randint(0, self.agent_len)
+
             #One way I can crossbreed is to combine the first portions of the first parent and the end portions of the second parent. 
             #The new strings beginning will be the beginning of the first parent and add the end of the string will be the end of the second parent and vice versa
             child1_string = parent1[:split_idx] + parent2[split_idx:self.agent_len]
@@ -70,13 +77,15 @@ class AgentPopulation:
 
             #append the agents
             offspring_agents.extend([child1_agent, child2_agent])
+        
+        #creating a new population instance
+        child_pop = AgentPopulation(self.num_pop, self.agent_len)
 
+        #setting the new list of agents
+        child_pop.set_agent_list(offspring_agents)
 
+        return(child_pop)
 
-       
-
-        pass
-    
     def mutate(self, agent):
         """
         Requires:
@@ -84,8 +93,48 @@ class AgentPopulation:
 
         Effect:
         mutates the inputted agent
+        returns the mutated agent
         """
-        pass
+        #used because crossover doesn't always give enough diversity and one may start converging on a set of solutions
+        #allows one to look at more candidates in the search space
+
+        rand_idx = random.randint(0, self.agent_len)
+        old_string = agent.get_string()
+        new_string = old_string[:rand_idx] + random.choice(string.ascii_lowercase) + old_string[rand_idx + 1:self.agent_len]
+
+        #setting the newly mutated string
+        agent.set_string(new_string)
+        return agent
+
+    def make_child_population(self, mutation_rate):
+        """
+        Requires:
+        mutation_rate is a float between 0 and 1 telling us how often we want to mutate the population
+
+        Effect:
+        returns a new population from the current population
+        """
+        elite_agent1, elite_agent2 = self.select_agents()
+        new_pop = self.crossbreed(elite_agent1, elite_agent2)
+
+        new_pop_lst = []
+        for cand_agent in new_pop.get_agent_list():
+            #checking if we need to mutate
+            if (random.uniform(0,1.0) <= mutation_rate):
+                #then we mutate
+                newag = self.mutate(cand_agent)
+                new_pop_lst.append(newag)
+                print("new agent: {}".format(newag))
+                continue
+            #else add the agent as it is
+            new_pop_lst.append(cand_agent)
+        
+        #setting a new population list
+        new_pop.set_agent_list(new_pop_lst)
+
+        return new_pop
+
+
 
 
 
