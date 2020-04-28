@@ -33,7 +33,7 @@ class AgentPopulation:
         """
         ag_list = self.get_agent_list()
         for agent in ag_list :
-            #fitness is from 0 to 100, 100 being the agent matches the exact string
+            #fitness is from 0 to 100, 100 being the agent matches the goal string exavtly
             fitscore = fuzz.ratio(agent.string, true_string)
             agent.set_fitness(fitscore)
             if fitscore >= 90:
@@ -58,6 +58,7 @@ class AgentPopulation:
 
         print("parent 1: {},\n parent 2: {}\n".format(parent1, parent2))
         return (parent1, parent2)
+        
     def crossbreed(self, parent1, parent2):
         """
         Requires:

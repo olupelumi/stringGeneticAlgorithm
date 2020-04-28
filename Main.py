@@ -1,5 +1,5 @@
-#Okay gonna try to make a genetic algorithm that will eventually match a name.
-#magdah - 6 letters 26^6 = 308915776
+#A genetic algoritm for one word strings
+
 import StringAgent
 import Population
 input_str = input("Enter one word with no spaces or dashes: ")
