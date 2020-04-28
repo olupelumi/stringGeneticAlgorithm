@@ -1,19 +1,13 @@
 #A genetic algoritm for one word strings
-
 import StringAgent
 import Population
+
 input_str = input("Enter one word with no spaces or dashes: ")
 input_str_len = len(input_str)
-population_num = 40
-generation_num = 500
-mutation_rate = 0.4
+population_num = int(input("How many agents do you want in a population? "))
+generation_num = int(input("How many generations? "))
+mutation_rate = float(input("mutation rate(a number between 0 and 1)? "))
 
-
-#eleents of a genetic algortithm
-
-#1. deternine the fitness of each agent
-#2. find the most fit ones
-#3. crossbreed and mutate them to create a new population
 
 #Initializing the first population of agents
 curr_pop = Population.AgentPopulation(population_num, input_str_len)
