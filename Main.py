@@ -2,7 +2,7 @@
 #magdah - 6 letters 26^6 = 308915776
 import StringAgent
 import Population
-input_str = "pelumi"
+input_str = input("Enter one word with no spaces or dashes: ")
 input_str_len = len(input_str)
 population_num = 40
 generation_num = 500
@@ -29,8 +29,3 @@ for gen in range(generation_num):
     #updating the population
     curr_pop = new_pop
  
-
-# import matplotlib.pyplot as plt
-# plt.plot([1, 2, 3, 4])
-# plt.ylabel('some numbers')
-# plt.show()
