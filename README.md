@@ -8,11 +8,17 @@ The basic idea is that we start with a population of random candidate solutions(
 
 ### What I did:
 
+### What I practiced:
+Utilized some of the object oriented and functional programming concepts I learned in my classes.\
+Things like:\
+using getters and setters\
+abstraction and encapsulation\
+Using functions as inputs in other functions\
 
-### Requirements:
-Python 3.7
-Python Fuzzywuzzy module
-Python random module
+### Requirements:\
+Python 3.7\
+Python Fuzzywuzzy module\
+Python random module\
 
 
 ### Please feel free to try it out on your own
