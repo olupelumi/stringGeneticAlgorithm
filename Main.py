@@ -4,7 +4,7 @@ import Population
 
 input_str = input("Enter one word with no spaces or dashes: ")
 input_str_len = len(input_str)
-population_num = int(input("How many agents do you want in a population? "))
+population_num = int(input("How many agents do you want in a population(an even integer)? "))
 generation_num = int(input("How many generations? "))
 mutation_rate = float(input("mutation rate(a number between 0 and 1)? "))
 
